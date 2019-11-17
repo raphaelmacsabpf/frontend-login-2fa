@@ -1,0 +1,64 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.app-navbar {
+    border-bottom: 3px #3333338f solid;
+    height: 72px;
+    background: rgb(18,8,20);
+    background: linear-gradient(126deg, rgba(18,8,20,1) 0%, rgb(124, 18, 176) 38%, rgb(0, 255, 233) 100%);
+    line-height: 72px;
+    font-family: 'Consolas';
+}
+ 
+.footer {
+    height: 100px;
+}
+
+.app {
+    background: #F4F4F4;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    font-weight: bold;
+    padding-inline-start: 0;
+    padding-left: 30px;
+}
+
+.menu-item {
+    padding-right: 30px;
+    opacity: 0.6;
+    transition: opacity linear 250ms;
+    color: white;
+}
+
+.menu-item:hover {
+    opacity: 1;
+}
+
+a, a:link, a:visited, a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.sign-in {
+    margin-left: auto;
+    margin-right: 12px;
+}
+
+.internal {
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 3px white;
+    transition: background-color, color, border-color linear 250ms;
+}
+
+.internal:hover {
+    background: white;
+    color: black;
+    border: solid 3px black;
+}

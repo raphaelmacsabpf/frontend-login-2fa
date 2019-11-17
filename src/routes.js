@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from './pages/login/login';
 import { isAuthenticated } from './auth';
 
 import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
@@ -16,7 +17,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route exact path="/login" component={() => <h1>Tela de Login</h1>} />
+            <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/" component={() => <h1>Você está logado</h1>} />
         </Switch>
     </BrowserRouter>

@@ -116,12 +116,15 @@ class Login extends Component {
 
     send2FA = (e) => {
         e.preventDefault();
+        const headers = { 
+            Authorization: sessionStorage.getItem('app-token')
+        }
+
         const form = {
-            token: sessionStorage.getItem('app-token'),
             number: this.state.number
         };
         
-        axios.post(apiConfig.BASE_URL + '/2fa', form)
+        axios.post(apiConfig.BASE_URL + '/2fa', form, { headers })
         .then((response) => {
             const token = response.data.token;
             sessionStorage.setItem("app-token", token);
@@ -134,12 +137,15 @@ class Login extends Component {
 
     confirmPin = (e) => {
         e.preventDefault();
+        const headers = { 
+            Authorization: sessionStorage.getItem('app-token')
+        }
+
         const form = {
-            token: sessionStorage.getItem('app-token'),
             pin: this.state.pin
         };
         
-        axios.post(apiConfig.BASE_URL + '/verify-2fa', form)
+        axios.post(apiConfig.BASE_URL + '/verify-2fa', form, { headers })
         .then((response) => {
             const token = response.data.permanentToken;
             sessionStorage.setItem("app-token", token);

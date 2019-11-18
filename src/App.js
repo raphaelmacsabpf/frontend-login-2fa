@@ -8,11 +8,9 @@ const App = () =>
 <div className="app">
   <div className="">
     <div className="menu app-navbar">
-      <a className="menu-item" href="/">Home</a>
-      <a className="menu-item" href="/a-empresa">A Empresa</a>
-      <a className="menu-item" href="/trabalhe-conosco">Trabalhe Conosco</a>
-      <a className="menu-item" href="/solucoes">Soluções</a>
-      <a className="menu-item" href="/contato">Contato</a>
+      <a className="menu-item" href="/">Painel</a>
+      <a className="menu-item" href="/documentacao">Documentação</a>
+      <a className="menu-item" href="/suporte">Suporte</a>
       <div className="sign-in">
         <a className="internal" href="/login">Entrar</a>
       </div>

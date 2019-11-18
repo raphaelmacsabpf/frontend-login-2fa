@@ -7,25 +7,16 @@
 .login-form {
     padding: 30px;
     padding-bottom: 40px;
-    background-color: #6a33b8;
-    border-left: solid 2px #7f4fc3;
+    background-color: #6a33b800;
     font-weight: bold;
     font-size: 22px;
-    color: #ffffffd1;
+    color: #000000d1;
 }
 
 .form-input {
     font-size: 18px!important;
     font-weight: 600!important;
     color: #8f82a0!important;
-}
-
-.forgot-password {
-    color: #d6d6d696!important;
-}
-
-.forgot-password:hover {
-    color: #ffffff!important;
 }
 
 @media only screen 

@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Button, Form, ButtonGroup } from 'react-bootstrap';
+import { Button, Form, ButtonGroup, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
 import apiConfig from '../../api-config';
@@ -9,7 +9,9 @@ import './login.css';
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
+            showAlert: false,
+            alertMessage: '',
             stage: 'email-login',
             email: '', 
             password: '', 
@@ -24,7 +26,13 @@ class Login extends Component {
                 <div className="container">
                     <div className="row login-page">                        
                         <div className="mx-auto col-md-5 col-sm-8 login-form">
-                            { this.state.stage === 'email-login' && (
+                            { this.state.showAlert && (
+                                <Alert variant="warning" onClose={() => this.setState({showAlert: false})} size="small" dismissible>
+                                    {this.state.alertMessage}
+                                </Alert>
+                            )}
+
+                            { this.state.stage === 'email-login' && ( 
                                 <Form onSubmit={(e) => this.doLogin(e)}>
                                     <Form.Group controlId="formBasicEmail">
                                         <Form.Label>Email</Form.Label>
@@ -99,10 +107,10 @@ class Login extends Component {
         .then((response) => {
             const token = response.data.token;
             sessionStorage.setItem("app-token", token);
-            this.setState({stage: 'send-2fa'});
+            this.setState({stage: 'send-2fa', showAlert: false});
         })
         .catch((error) => {
-            console.error(error);
+            this.setState({showAlert: true, alertMessage: error.response.data.message});
         });
     }
 
@@ -117,10 +125,10 @@ class Login extends Component {
         .then((response) => {
             const token = response.data.token;
             sessionStorage.setItem("app-token", token);
-            this.setState({stage: 'confirm-pin'});
+            this.setState({stage: 'confirm-pin', showAlert: false});
         })
         .catch((error) => {
-            console.error(error);
+            this.setState({showAlert: true, alertMessage: error.response.data.message});
         });
     }
 
@@ -138,7 +146,7 @@ class Login extends Component {
             window.open('/', '_self');
         })
         .catch((error) => {
-            console.error(error);
+            this.setState({showAlert: true, alertMessage: error.response.data.message});
         });
     }
 

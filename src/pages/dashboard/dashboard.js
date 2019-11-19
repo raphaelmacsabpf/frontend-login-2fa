@@ -19,10 +19,12 @@ class Dashboard extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <h1>Dashboard</h1>
-                    <h3>Nome: { this.state.name }</h3>
-                    <h3>Email: { this.state.email }</h3>
-                    <h3>Phone: { this.state.phone }</h3>
+                    <h1 className="col-md-12">Dashboard</h1>
+                    <ul className="col-md-12">
+                        <li><h3>Nome: { this.state.name }</h3></li>
+                        <li><h3>Email: { this.state.email }</h3></li>
+                        <li><h3>Phone: { this.state.phone }</h3></li>
+                    </ul>
                 </div>
             </div>
         );

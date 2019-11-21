@@ -37,7 +37,7 @@ class Dashboard extends Component {
             }
         }
 
-        axios.get(apiConfig.BASE_URL + '/', requestConfig)
+        axios.get(apiConfig.BASE_URL + '/dashboard', requestConfig)
         .then((response) => {
             this.setState({ 
                 name: response.data.name,

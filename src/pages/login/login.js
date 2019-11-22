@@ -54,24 +54,6 @@ class Login extends Component {
                                 </Form>
                             )}
 
-                            { this.state.stage === 'send-2fa' && (
-                                <Form onSubmit={(e) => this.send2FA(e)}>
-                                    <Form.Group controlId="formBasicEmail">
-                                        <Form.Label>Número</Form.Label>
-                                        <Form.Control name="number" value={this.state.number} onChange={this.handleChange} type="tel" className="form-input" />
-                                    </Form.Group>
-
-                                    <ButtonGroup>
-                                        <Button variant="info" onClick={() => this.setState({stage: 'email-login'})}>
-                                            Voltar
-                                        </Button>
-                                        <Button type="submit">
-                                            Enviar PIN
-                                        </Button>
-                                    </ButtonGroup>
-                                </Form>
-                            )}
-
                             { this.state.stage === 'confirm-pin' && (
                                 <Form onSubmit={(e) => this.confirmPin(e)}>
                                     <Form.Group controlId="formBasicEmail">
@@ -104,27 +86,6 @@ class Login extends Component {
         }
         
         axios.post(apiConfig.BASE_URL + '/login', form)
-        .then((response) => {
-            const token = response.data.token;
-            sessionStorage.setItem("app-token", token);
-            this.setState({stage: 'send-2fa', showAlert: false});
-        })
-        .catch((error) => {
-            this.setState({showAlert: true, alertMessage: error.response.data.message});
-        });
-    }
-
-    send2FA = (e) => {
-        e.preventDefault();
-        const headers = { 
-            Authorization: sessionStorage.getItem('app-token')
-        }
-
-        const form = {
-            number: this.state.number
-        };
-        
-        axios.post(apiConfig.BASE_URL + '/2fa', form, { headers })
         .then((response) => {
             const token = response.data.token;
             sessionStorage.setItem("app-token", token);
